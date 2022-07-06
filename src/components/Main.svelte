@@ -54,7 +54,7 @@
     <br /><br />
 
     Not enough questions?
-    <a href="/wace-resources-guide" target="blank"
+    <a href="https://olliecheng.me/wace-resources-guide" target="blank"
       >I discuss my preferred resources for studying here.</a
     ><br /><br />
     Good luck to all students! You got this 💕
