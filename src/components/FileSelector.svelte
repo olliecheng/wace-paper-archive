@@ -2,7 +2,7 @@
   import * as fileManager from "../file";
   import utils from "../utils";
 
-  export let files = [];
+  export let files = {};
 
   interface fileObject {
     name: string;
@@ -152,7 +152,7 @@
       if (state === FolderState.Partial) {
         return [path, 1];
       }
-      return undefined;
+      return;
     });
 
     folderValues = utils.objectMap(folderStatus, (path, state) => {
@@ -162,12 +162,19 @@
       return [path, 0];
     });
 
-    files = Object.entries(checkedValues).reduce((arr, [path, selected]) => {
+    files = utils.objectMap(checkedValues, (path, selected) => {
       if (selected) {
-        return [...arr, path];
+        return [path, dirs[path]];
       }
-      return arr;
-    }, []);
+      return;
+    });
+
+    // files = Object.entries(checkedValues).reduce((arr, [path, selected]) => {
+    //   if (selected) {
+    //     return [...arr, path];
+    //   }
+    //   return arr;
+    // }, []);
   }
 
   function updateFileState(path) {

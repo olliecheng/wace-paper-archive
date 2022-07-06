@@ -4,23 +4,13 @@ import streamSaver from "streamsaver";
 export const BASE_URL = "https://papers.olliecheng.me/dl";
 streamSaver.mitm = `${BASE_URL}/stream-dw.html`;
 
-export interface fileObject {
+export interface FileObject {
   path: string;
   url: string;
   size: number;
 }
 
-async function download(event: MouseEventInit) {
-  let files = [
-    ...crawlDirTree(["biology"], dirs),
-    ...crawlDirTree(["chemistry"], dirs),
-    ...crawlDirTree(["physics"], dirs),
-    ...crawlDirTree(["mathematics_methods"], dirs),
-    ...crawlDirTree(["mathematics_specialist"], dirs),
-    ...crawlDirTree(["french_second_language"], dirs),
-    ...crawlDirTree(["ancient_history"], dirs),
-    ...crawlDirTree(["mathematics_applications"], dirs),
-  ];
+export async function download(files) {
   let metadata = files.map((x) => {
     return {
       name: x.path,
@@ -48,7 +38,7 @@ async function download(event: MouseEventInit) {
 
   const fileZipped = clientZip.downloadZip(lazyFetch());
 
-  fileStream = streamSaver.createWriteStream("filename.zip", {
+  fileStream = streamSaver.createWriteStream("WACE.zip", {
     size: zipSize, // (optional filesize) Will show progress
   });
 
@@ -64,7 +54,7 @@ async function download(event: MouseEventInit) {
   );
 }
 
-function crawlDirTree(paths: string[], dirs): fileObject[] {
+function crawlDirTree(paths: string[], dirs): FileObject[] {
   let basePath = paths.join("/");
 
   return Object.entries(dirs)

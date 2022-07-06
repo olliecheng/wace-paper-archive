@@ -1,9 +1,32 @@
 <script lang="ts">
-  let files = [];
+  import { download, BASE_URL, FileObject } from "../file";
+  import FileSelector from "./FileSelector.svelte";
+
+  let files = {} as Map<string, number>;
   let fileSize: number = 0;
   let fileCount: number = 5;
 
-  import FileSelector from "./FileSelector.svelte";
+  $: fileSize = Math.round(
+    Object.values(files)
+      // sum and convert to MB
+      .reduce((a, b) => a + b, 0) / 1048576
+  );
+
+  $: fileCount = Object.keys(files).length;
+
+  function downloadFiles() {
+    let fileStructure: FileObject[] = Object.entries(files).map(
+      ([path, size]) => {
+        return {
+          path: path,
+          url: BASE_URL + "/" + encodeURI(path),
+          size: size,
+        };
+      }
+    );
+
+    download(fileStructure);
+  }
 </script>
 
 <div class="container">
@@ -12,7 +35,7 @@
       Selected file size: {fileSize}<span style="font-size: 16px">&nbsp;MB</span
       >
     </div>
-    <div class="download-btn">
+    <div class="download-btn" on:click={downloadFiles}>
       {fileCount
         ? `Download ${fileCount} ` + (fileCount === 1 ? "file" : "files")
         : "No files selected"}
@@ -43,7 +66,7 @@
     a difficulty similar to current WACE.
   </div>
 
-  <FileSelector />
+  <FileSelector bind:files />
 </div>
 
 <style lang="scss">
