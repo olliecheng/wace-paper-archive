@@ -1,7 +1,7 @@
 import * as clientZip from "client-zip";
 import streamSaver from "streamsaver";
 
-export const BASE_URL = "https://papers.olliecheng.me";
+export const BASE_URL = "https://papers.olliecheng.me/dl";
 streamSaver.mitm = `${BASE_URL}/stream-dw.html`;
 
 export interface fileObject {
