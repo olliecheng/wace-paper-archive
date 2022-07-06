@@ -11,8 +11,6 @@ export interface fileObject {
 }
 
 async function download(event: MouseEventInit) {
-  console.log("Hi");
-
   let files = [
     ...crawlDirTree(["biology"], dirs),
     ...crawlDirTree(["chemistry"], dirs),
@@ -23,8 +21,6 @@ async function download(event: MouseEventInit) {
     ...crawlDirTree(["ancient_history"], dirs),
     ...crawlDirTree(["mathematics_applications"], dirs),
   ];
-  console.log("results", files, dirs);
-
   let metadata = files.map((x) => {
     return {
       name: x.path,
@@ -63,7 +59,7 @@ async function download(event: MouseEventInit) {
     },
     () => {
       downloadComplete = true;
-      console.log("Failed");
+      console.log("Failed download...");
     }
   );
 }
@@ -102,12 +98,10 @@ window.onbeforeunload = (evt) => {
 };
 
 export async function fetchDirectoryTree() {
-  console.log("Downloading dirs...");
-
   let rootReq = await fetch(`${BASE_URL}/root.json`);
   let rootText = await rootReq.text();
 
-  console.log("Downloaded.");
+  console.log("Loaded file directory");
   let rootObj = JSON.parse(rootText);
 
   delete rootObj["root.json"];

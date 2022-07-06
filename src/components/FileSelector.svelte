@@ -2,6 +2,8 @@
   import * as fileManager from "../file";
   import utils from "../utils";
 
+  export let files = [];
+
   interface fileObject {
     name: string;
     path: string;
@@ -67,14 +69,11 @@
     dirEntries = Object.entries(dirs);
 
     current_dirs = getRootObjects(dirs, "");
-    console.log(current_dirs);
 
     folders = createFolderHierarchy(dirs);
-    console.log("folders", folders);
   }
 
   function navigatePath(path) {
-    console.log("path", path);
     if (!dirs) {
       // directories not loaded yet..
 
@@ -99,7 +98,6 @@
     } else {
       navs = [];
     }
-    console.log("navs", navs);
   }
 
   let current_dirs: fileObject[] = fileManager
@@ -132,8 +130,6 @@
   }
 
   function updateFolderState(path) {
-    console.log("updateFolderState");
-
     let currentFileHierarchy = createFolderHierarchy(
       Object.fromEntries(
         Object.entries(checkedValues).filter(([_, value]) => {
@@ -166,23 +162,15 @@
       return [path, 0];
     });
 
-    let AfolderValues = Object.fromEntries(
-      Object.entries(currentFileHierarchy).filter(([path, size]) => {
-        if (size === folders[path]) {
-          return true;
-        } else if (size < folders[path]) {
-          return;
-        }
-        return false;
-      })
-    );
-
-    console.log("cFH", folderValues);
+    files = Object.entries(checkedValues).reduce((arr, [path, selected]) => {
+      if (selected) {
+        return [...arr, path];
+      }
+      return arr;
+    }, []);
   }
 
-  function updateFileState(path, e) {
-    console.log(e);
-
+  function updateFileState(path) {
     // affects if the files inside the folder are selected or unselected
     let selectFiles = folderValues[path];
 
@@ -223,16 +211,15 @@
 </div>
 <table class="selector">
   <tr class="header-row">
-    <th class="obj-checkbox"><input type="checkbox" /></th>
+    <th class="obj-checkbox obj-header" />
     <th class="obj-cell">Name</th>
   </tr>
 
   {#each current_dirs as dir}
     <tr class="obj-row">
       <td
-        class="obj-checkbox {partialValues[dir.path]
-          ? 'partially-selected'
-          : ''}"
+        class="obj-checkbox"
+        class:partially-selected={partialValues[dir.path]}
       >
         {#if dir.fileType === "file"}
           <input
@@ -246,8 +233,8 @@
           <input
             type="checkbox"
             bind:checked={folderValues[dir.path]}
-            on:change={(e) => {
-              updateFileState(dir.path, e);
+            on:change={() => {
+              updateFileState(dir.path);
             }}
           />
         {/if}
@@ -338,6 +325,8 @@
 
         height: 16px;
         width: 16px;
+
+        cursor: pointer;
 
         transition: background-color 0.2s ease 0s, border-color 0.1s ease 0s;
 
