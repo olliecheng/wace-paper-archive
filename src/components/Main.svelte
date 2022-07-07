@@ -3,8 +3,8 @@
   import FileSelector from "./FileSelector.svelte";
 
   let files = {} as Map<string, number>;
-  let fileSize: number = 0;
-  let fileCount: number = 5;
+  let fileSize: number;
+  let fileCount: number;
 
   $: fileSize = Math.round(
     Object.values(files)
@@ -15,6 +15,10 @@
   $: fileCount = Object.keys(files).length;
 
   function downloadFiles() {
+    if (!fileCount) {
+      return;
+    }
+
     let fileStructure: FileObject[] = Object.entries(files).map(
       ([path, size]) => {
         return {
@@ -35,7 +39,11 @@
       Selected file size: {fileSize}<span style="font-size: 16px">&nbsp;MB</span
       >
     </div>
-    <div class="download-btn" on:click={downloadFiles}>
+    <div
+      class="download-btn"
+      on:click={downloadFiles}
+      class:disabled={!fileCount}
+    >
       {fileCount
         ? `Download ${fileCount} ` + (fileCount === 1 ? "file" : "files")
         : "No files selected"}
@@ -114,10 +122,14 @@
 
       transition: 0.2s;
 
-      &:hover {
+      &:hover:not(.disabled) {
         cursor: pointer;
         color: $accent-color;
         background-color: $accent-color-faded;
+      }
+
+      &.disabled {
+        cursor: not-allowed;
       }
     }
   }
