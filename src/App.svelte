@@ -6,7 +6,6 @@
 
 <svelte:head>
   <link rel="stylesheet" href="https://use.typekit.net/qly8eqv.css" />
-  <base href="/papers/" />
   <style>
     body {
       padding: 0;
