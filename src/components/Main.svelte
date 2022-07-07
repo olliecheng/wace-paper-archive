@@ -6,6 +6,8 @@
   let fileSize: number;
   let fileCount: number;
 
+  const IS_SAFARI = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+
   $: fileSize = Math.round(
     Object.values(files)
       // sum and convert to MB
@@ -51,6 +53,15 @@
   </div>
 
   <div class="desc">
+    {#if IS_SAFARI}
+      <strong>
+        Bulk downloading is a little weird on Safari due to browser constraints.
+        If it doesn't work, try Chrome instead.
+      </strong>
+
+      <br /><br />
+    {/if}
+
     Credit to
     <a href="https://github.com/peter-tanner" target="blank">Peter Tanner</a>
     for his work in compiling the original
