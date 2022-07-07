@@ -1,5 +1,5 @@
 <script lang="ts">
-  export let name: string;
+  export const name = "WACE Papers";
   import Sidebar from "./components/Sidebar.svelte";
   import Main from "./components/Main.svelte";
 </script>

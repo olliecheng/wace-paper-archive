@@ -406,12 +406,5 @@
         padding-bottom: 3.5px;
       }
     }
-
-    .header {
-      background-color: $sidebar-color;
-      padding: 10px 20px;
-      border-top-left-radius: 10px;
-      border-top-right-radius: 10px;
-    }
   }
 </style>
