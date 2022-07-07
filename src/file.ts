@@ -10,7 +10,7 @@ export interface FileObject {
   size: number;
 }
 
-export async function download(files) {
+export async function download(files, callback, progressCallback) {
   let metadata = files.map((x) => {
     return {
       name: x.path,
@@ -42,16 +42,42 @@ export async function download(files) {
     size: zipSize, // (optional filesize) Will show progress
   });
 
-  downloadComplete = false;
-  fileZipped.body!.pipeTo(fileStream).then(
-    () => {
-      downloadComplete = true;
+  let bytes = 0n;
+  let downloadPercentage = 0n;
+
+  const ByteCountStreamTransformer = new TransformStream({
+    start() {},
+    transform(chunk, controller) {
+      bytes += BigInt(chunk.length);
+
+      // will be rounded, as BigInt operations have integer precision
+      let currentDownloadPercentage = (bytes * 100n) / zipSize;
+      if (currentDownloadPercentage - downloadPercentage >= 2) {
+        downloadPercentage = currentDownloadPercentage;
+        progressCallback(Number(downloadPercentage));
+      }
+
+      controller.enqueue(chunk);
     },
-    () => {
-      downloadComplete = true;
-      console.log("Failed download...");
-    }
-  );
+    flush() {},
+  });
+
+  let downloading = true;
+  fileZipped
+    .body!.pipeThrough(ByteCountStreamTransformer)
+    .pipeTo(fileStream)
+    .then(
+      () => {
+        downloading = false;
+        callback();
+      },
+      () => {
+        downloading = false;
+        console.log("Failed download...");
+        callback();
+      }
+    );
+  return;
 }
 
 function crawlDirTree(paths: string[], dirs): FileObject[] {

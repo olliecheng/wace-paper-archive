@@ -1,12 +1,17 @@
 <script lang="ts">
+  import App from "../App.svelte";
   import { download, BASE_URL, FileObject } from "../file";
   import FileSelector from "./FileSelector.svelte";
+  import Sidebar from "./Sidebar.svelte";
 
   let files = {} as Map<string, number>;
   let fileSize: number;
   let fileCount: number;
 
   const IS_SAFARI = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+
+  let downloading: boolean = false;
+  let downloadPercent = 0;
 
   $: fileSize = Math.round(
     Object.values(files)
@@ -17,9 +22,11 @@
   $: fileCount = Object.keys(files).length;
 
   function downloadFiles() {
-    if (!fileCount) {
+    if (!fileCount || downloading) {
       return;
     }
+
+    downloading = true;
 
     let fileStructure: FileObject[] = Object.entries(files).map(
       ([path, size]) => {
@@ -31,7 +38,15 @@
       }
     );
 
-    download(fileStructure);
+    download(
+      fileStructure,
+      () => {
+        downloading = false;
+      },
+      (percent) => {
+        downloadPercent = percent;
+      }
+    );
   }
 </script>
 
@@ -46,7 +61,17 @@
       on:click={downloadFiles}
       class:disabled={!fileCount}
     >
-      {fileCount
+      <!--
+        downloading: true -> "Downloading..."
+        fileCount != 0 ->
+          fileCount == 1: Download 1 file
+          fileCount != 1: Download ${fileCount} files
+        fileCount == 0 -> No files selected
+      -->
+
+      {downloading
+        ? `Downloading: ${downloadPercent}%`
+        : fileCount
         ? `Download ${fileCount} ` + (fileCount === 1 ? "file" : "files")
         : "No files selected"}
     </div>
