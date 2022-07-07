@@ -102,6 +102,9 @@
 
       border: solid 3px $accent-color;
 
+      position: fixed;
+      right: 60px;
+
       // prevents border from changing size of div
       -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
       -moz-box-sizing: border-box; /* Firefox, other Gecko */

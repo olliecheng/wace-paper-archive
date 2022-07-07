@@ -206,6 +206,7 @@
     on:click={() => {
       navigatePath(navs.slice(0, -1).join("/"));
     }}
+    class:hidden={!navs.length}
   />
   <span class="nav-obj" on:click={() => navigatePath("")}>All Papers</span>
   <span class="nav-separator">&nbsp;/&nbsp;</span>
@@ -301,6 +302,12 @@
     .nav-back-button {
       cursor: pointer;
       margin-right: 5px;
+      transition: opacity 0.3s;
+      opacity: 1;
+
+      &.hidden {
+        opacity: 0;
+      }
     }
   }
 
