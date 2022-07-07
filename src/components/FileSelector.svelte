@@ -201,6 +201,12 @@
 </script>
 
 <div class="path">
+  <i
+    class="bi bi-caret-left-fill nav-back-button"
+    on:click={() => {
+      navigatePath(navs.slice(0, -1).join("/"));
+    }}
+  />
   <span class="nav-obj" on:click={() => navigatePath("")}>All Papers</span>
   <span class="nav-separator">&nbsp;/&nbsp;</span>
 
@@ -290,6 +296,11 @@
       &:hover {
         text-decoration: underline;
       }
+    }
+
+    .nav-back-button {
+      cursor: pointer;
+      margin-right: 5px;
     }
   }
 
