@@ -115,18 +115,28 @@
   @import "../vars.scss";
 
   .container {
-    padding: 30px 50px;
+    @include xs {
+      padding: 30px 34px;
+    }
+
+    @include sm {
+      padding: 30px 50px;
+    }
     font-size: 20px;
   }
 
   .top-bar {
-    display: flex;
-
     width: 100%;
 
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+    display: flex;
+    @include xs {
+      flex-direction: column-reverse;
+    }
+    @include sm {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
 
     margin-bottom: 30px;
 
@@ -144,8 +154,12 @@
 
       border: solid 3px $accent-color;
 
-      position: fixed;
-      right: 60px;
+      width: fit-content;
+
+      @include sm {
+        position: fixed;
+        right: 60px;
+      }
 
       // prevents border from changing size of div
       -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */

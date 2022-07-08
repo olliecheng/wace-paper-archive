@@ -24,11 +24,10 @@
   main {
     font-family: $sans-serif;
 
-    max-width: 240px;
     margin: 0;
 
     @include sm {
-      margin-left: $sidebar-width-small;
+      margin-left: $sidebar-width-transition;
     }
 
     @include lg {
@@ -37,11 +36,5 @@
 
     box-sizing: border-box;
     height: 100%;
-  }
-
-  @media (min-width: 640px) {
-    main {
-      max-width: none;
-    }
   }
 </style>

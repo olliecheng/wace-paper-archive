@@ -24,23 +24,31 @@
   @import "../vars.scss";
 
   .sidebar {
-    height: 100%;
-
     // adjust width:
     @include xs {
+      min-height: 80%;
     }
 
     @include sm {
-      width: $sidebar-width-small;
+      // width: $sidebar-width-small;
+      width: $sidebar-width-transition;
+
+      height: 100%;
+
+      position: fixed;
+      left: 0;
+      top: 0;
+
+      .internal-container {
+        overflow-y: scroll;
+        overflow-x: hidden;
+      }
     }
 
     @include lg {
       width: $sidebar-width-large;
     }
 
-    position: fixed;
-    left: 0;
-    top: 0;
     background-color: $sidebar-color;
 
     font-family: $sans-serif;
@@ -52,17 +60,15 @@
 
     box-sizing: border-box;
 
-    a:visited {
-      color: black;
-    }
-
     a {
       color: black;
+
+      &:visited {
+        color: black;
+      }
     }
 
     .internal-container {
-      overflow-y: scroll;
-      overflow-x: hidden;
       padding: 34px;
     }
 
