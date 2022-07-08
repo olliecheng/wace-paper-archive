@@ -1,8 +1,6 @@
 <script lang="ts">
-  import App from "../App.svelte";
   import { download, BASE_URL, FileObject } from "../file";
   import FileSelector from "./FileSelector.svelte";
-  import Sidebar from "./Sidebar.svelte";
 
   let files = {} as Map<string, number>;
   let fileSize: number;

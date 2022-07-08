@@ -1,21 +1,23 @@
 <div class="sidebar">
-  <h2>
-    <a href="https://olliecheng.me/" target="_blank">olliecheng.me/papers</a>
-  </h2>
-  <h1><strong>WACE</strong> Exam<br />Archive</h1>
-  <p>
-    A collection of many old official WACE examination papers, from 2007
-    onwards. Many of these have been removed from the official website.
-  </p>
+  <div class="internal-container">
+    <h2>
+      <a href="https://olliecheng.me/" target="_blank">olliecheng.me/papers</a>
+    </h2>
+    <h1><strong>WACE</strong> Exam<br />Archive</h1>
+    <p>
+      A collection of many old official WACE examination papers, from 2007
+      onwards. Many of these have been removed from the official website.
+    </p>
 
-  <ul class="nav">
-    <li><a href="//" target="blank">ATAR & Scaling Calculator</a></li>
-    <li><a href="//" target="blank">How Scaling Works</a></li>
-    <br />
-    <li><a href="//" target="blank">About Me</a></li>
-    <li><a href="//" target="blank">UCAT tips</a></li>
-    <li><a href="//" target="blank">WACE Resources Guide</a></li>
-  </ul>
+    <ul class="nav">
+      <li><a href="//" target="blank">ATAR & Scaling Calculator</a></li>
+      <li><a href="//" target="blank">How Scaling Works</a></li>
+      <br />
+      <li><a href="//" target="blank">About Me</a></li>
+      <li><a href="//" target="blank">UCAT tips</a></li>
+      <li><a href="//" target="blank">WACE Resources Guide</a></li>
+    </ul>
+  </div>
 </div>
 
 <style lang="scss">
@@ -23,7 +25,19 @@
 
   .sidebar {
     height: 100%;
-    width: $sidebar-width;
+
+    // adjust width:
+    @include xs {
+    }
+
+    @include sm {
+      width: $sidebar-width-small;
+    }
+
+    @include lg {
+      width: $sidebar-width-large;
+    }
+
     position: fixed;
     left: 0;
     top: 0;
@@ -36,7 +50,6 @@
     flex-direction: column;
     justify-content: flex-end;
 
-    padding: 34px;
     box-sizing: border-box;
 
     a:visited {
@@ -45,6 +58,12 @@
 
     a {
       color: black;
+    }
+
+    .internal-container {
+      overflow-y: scroll;
+      overflow-x: hidden;
+      padding: 34px;
     }
 
     h1 {

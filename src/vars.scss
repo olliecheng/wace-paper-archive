@@ -1,5 +1,8 @@
 $sidebar-color: #ecdef8;
-$sidebar-width: 400px;
+
+$sidebar-width-large: 400px;
+$sidebar-width-small: 300px;
+
 $sidebar-para-color: #400d67;
 
 $accent-color: #400d67;
@@ -14,3 +17,51 @@ $serif: warnock-pro, Georgia, "Times New Roman", Times, serif;
 $monospace: calling-code, sans-serif;
 
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css");
+
+$screen-xs-min: 0px;
+
+// Small tablets and large smartphones (landscape view)
+$screen-sm-min: 576px;
+
+// Small tablets (portrait view)
+$screen-md-min: 768px;
+
+// Tablets and small desktops
+$screen-lg-min: 992px;
+
+// Large tablets and desktops
+$screen-xl-min: 1200px;
+
+// Small devices
+@mixin xs {
+  @media (min-width: #{$screen-xs-min}) {
+    @content;
+  }
+}
+
+@mixin sm {
+  @media (min-width: #{$screen-sm-min}) {
+    @content;
+  }
+}
+
+// Medium devices
+@mixin md {
+  @media (min-width: #{$screen-md-min}) {
+    @content;
+  }
+}
+
+// Large devices
+@mixin lg {
+  @media (min-width: #{$screen-lg-min}) {
+    @content;
+  }
+}
+
+// Extra large devices
+@mixin xl {
+  @media (min-width: #{$screen-xl-min}) {
+    @content;
+  }
+}

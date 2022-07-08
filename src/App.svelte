@@ -25,7 +25,15 @@
     font-family: $sans-serif;
 
     max-width: 240px;
-    margin: 0 0 0 $sidebar-width;
+    margin: 0;
+
+    @include sm {
+      margin-left: $sidebar-width-small;
+    }
+
+    @include lg {
+      margin-left: $sidebar-width-large;
+    }
 
     box-sizing: border-box;
     height: 100%;
