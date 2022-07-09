@@ -16,6 +16,11 @@
 	</style>
 	<base href="/papers" />
 	<title>WACE Archive</title>
+
+	<script
+		data-goatcounter="https://olliecheng.goatcounter.com/count"
+		async
+		src="//gc.zgo.at/count.js"></script>
 </svelte:head>
 
 <Sidebar />
