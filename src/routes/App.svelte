@@ -15,6 +15,7 @@
 		}
 	</style>
 	<base href="/papers" />
+	<title>WACE Archive</title>
 </svelte:head>
 
 <Sidebar />
