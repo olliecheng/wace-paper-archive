@@ -18,6 +18,9 @@
 	<title>WACE Archive</title>
 
 	<meta name="theme-color" content="#400d67" />
+	<meta name="author" content="Oliver Cheng" />
+	<meta name="description" content="A collection of past official WACE examination papers." />
+	<meta name="keywords" content="WACE, SCSA, exam, past papers" />
 
 	<script
 		data-goatcounter="https://olliecheng.goatcounter.com/count"
