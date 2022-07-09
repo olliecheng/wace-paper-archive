@@ -17,6 +17,8 @@
 	<base href="/papers" />
 	<title>WACE Archive</title>
 
+	<meta name="theme-color" content="#400d67" />
+
 	<script
 		data-goatcounter="https://olliecheng.goatcounter.com/count"
 		async
