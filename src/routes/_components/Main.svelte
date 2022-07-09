@@ -76,8 +76,8 @@
 
 	<div class="desc">
 		{#if IS_SAFARI}
-			Bulk downloading is a little weird on Safari due to browser constraints. If it doesn't work,
-			try Chrome instead.
+			Bulk downloading can be a little weird on Safari due to browser constraints. If it doesn't
+			work, try Chrome instead.
 
 			<br /><br />
 		{/if}
