@@ -10,12 +10,14 @@
 		</p>
 
 		<ul class="nav">
-			<li><a href="//" target="blank">ATAR & Scaling Calculator</a></li>
+			<!-- <li><a href="//" target="blank">ATAR & Scaling Calculator</a></li>
 			<li><a href="//" target="blank">How Scaling Works</a></li>
-			<br />
-			<li><a href="//" target="blank">About Me</a></li>
-			<li><a href="//" target="blank">UCAT tips</a></li>
-			<li><a href="//" target="blank">WACE Resources Guide</a></li>
+			<br /> -->
+			<li><a href="https://olliecheng.me" target="blank">About Me</a></li>
+			<li><a href="https://olliecheng.me/ucat-tips" target="blank">UCAT tips</a></li>
+			<li>
+				<a href="https://olliecheng.me/wace-resources-guide" target="blank">WACE Resources Guide</a>
+			</li>
 		</ul>
 	</div>
 </div>
