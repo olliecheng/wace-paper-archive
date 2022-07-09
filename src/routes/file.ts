@@ -2,17 +2,6 @@ import { browser } from '$app/env';
 
 let predictLength, downloadZip, streamSaver;
 
-import { onMount } from 'svelte';
-
-async function loadModules() {
-	let clientZip = await import('client-zip');
-	predictLength = clientZip.predictLength;
-	downloadZip = clientZip.downloadZip;
-	streamSaver = await import('streamsaver');
-}
-
-// onMount(loadModules);
-
 export const BASE_URL = 'https://papers.olliecheng.me/dl';
 
 export interface FileObject {
