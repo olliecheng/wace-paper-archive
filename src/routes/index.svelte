@@ -14,6 +14,7 @@
 			padding: 0;
 		}
 	</style>
+	<base href="/papers" />
 </svelte:head>
 
 <Sidebar />
