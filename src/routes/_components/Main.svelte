@@ -103,6 +103,17 @@
 	</div>
 
 	<FileSelector bind:files />
+
+	<div class="desc" style="margin-top: 30px;">
+		Source code for this website: <a
+			href="https://github.com/denosawr/wace-paper-archive"
+			target="blank">GitHub</a
+		><br />
+		Source code for Peter's WACE Exam Archive:
+		<a href="https://github.com/atar-wace-archive/atar-wace-archive.github.io" target="blank"
+			>GitHub</a
+		>
+	</div>
 </div>
 
 <style lang="scss">
