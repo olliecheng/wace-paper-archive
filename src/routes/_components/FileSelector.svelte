@@ -247,20 +247,16 @@
 			</td>
 			<td class="obj-cell">
 				{#if dir.fileType === 'file'}
-					<i class="bi bi-file-earmark-richtext" />
-				{:else}
-					<i class="bi bi-folder2" />
-				{/if}
-
-				{#if dir.fileType === 'file'}
 					<div class="obj">
 						<a href={fileManager.BASE_URL + '/' + dir.path} target="blank">
-							{utils.internalToDisplayName(dir.name)}
+							<i class="bi bi-file-earmark-richtext" />
+							<span class="obj-text">{utils.internalToDisplayName(dir.name)}</span>
 						</a>
 					</div>
 				{:else}
 					<div class="obj" on:click={() => navigatePath(dir.path)}>
-						{utils.internalToDisplayName(dir.name)}
+						<i class="bi bi-folder2" />
+						<span class="obj-text">{utils.internalToDisplayName(dir.name)}</span>
 					</div>
 				{/if}
 			</td>
@@ -377,14 +373,15 @@
 			border-radius: 10px;
 
 			.obj {
-				&:hover {
-					text-decoration: underline;
-					cursor: pointer;
-				}
-			}
+				cursor: pointer;
 
-			i {
-				padding-right: 5px;
+				.obj-text:hover {
+					text-decoration: underline;
+				}
+
+				i {
+					padding-right: 2px;
+				}
 			}
 		}
 
