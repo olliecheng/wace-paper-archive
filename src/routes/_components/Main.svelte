@@ -75,6 +75,22 @@
 	</div>
 
 	<div class="desc">
+		Hi everybody, Ollie here. Given recent copyright shenanegans, I have made the difficult decision to
+		take down the public-facing papers archive webpage. I will do my best to enable the distribution of
+		valuable resources to students, but unfortunately I've decided that I don't have the energy or time
+		to fight copyright issues.
+
+		<br /><br />
+
+		Keep an eye on the "WACE Dungeon" Discord, where you may be able to find useful resources. Also, check
+		out the code for this webpage!
+
+		<br /><br />
+
+		As usual, best of luck with exams everybody. The fact that you're even here is a testament to your dedication
+		to excellence and you should be proud of yourself, no matter how the numbers end up.
+		
+		<s>
 		{#if IS_SAFARI}
 			Bulk downloading can be a little weird on Safari due to browser constraints. If it doesn't
 			work, try Chrome instead.
@@ -100,9 +116,10 @@
 
 		<strong>Warning:</strong> papers prior to 2016 follow a different syllabus. It is recommended to
 		approach these papers with caution. Stage 3 papers reflect a difficulty similar to current WACE.
+		</s>
 	</div>
 
-	<FileSelector bind:files />
+	<!-- <FileSelector bind:files /> -->
 
 	<div class="desc" style="margin-top: 30px;">
 		Source code for this website: <a
