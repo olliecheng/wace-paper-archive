@@ -75,6 +75,7 @@
 	</div>
 
 	<div class="desc">
+		<span class="color: #991056;">
 		Hi everybody, Ollie here. Given recent copyright shenanegans, I have made the difficult decision to
 		take down the public-facing papers archive webpage. I will do my best to enable the distribution of
 		valuable resources to students, but unfortunately I've decided that I don't have the energy or time
@@ -89,7 +90,10 @@
 
 		As usual, best of luck with exams everybody. The fact that you're even here is a testament to your dedication
 		to excellence and you should be proud of yourself, no matter how the numbers end up.
-		
+		</span>
+
+		<br /><br /><br />
+
 		<s>
 		{#if IS_SAFARI}
 			Bulk downloading can be a little weird on Safari due to browser constraints. If it doesn't
