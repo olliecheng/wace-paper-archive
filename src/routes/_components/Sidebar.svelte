@@ -9,6 +9,12 @@
 			have been removed from the official website.
 		</p>
 
+		<p>
+			Interested in tutoring from 99.9+ ATAR tutors? I write all the teaching resources I use, to ensure
+			my students get the best possible lesson. We do small group classes - check us out at
+			<a href="https://checkpointeducation.com.au" target="blank">https://checkpointeducation.com.au</a>.
+		</p>
+
 		<ul class="nav">
 			<!-- <li><a href="//" target="blank">ATAR & Scaling Calculator</a></li>
 			<li><a href="//" target="blank">How Scaling Works</a></li>
